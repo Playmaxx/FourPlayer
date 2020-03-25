@@ -1,0 +1,2 @@
+E:\GitKraken\FourPlayer\FourPlayer\x64\Debug\FourPlayer.exe
+E:\GitKraken\FourPlayer\FourPlayer\x64\Debug\FourPlayer.pdb
