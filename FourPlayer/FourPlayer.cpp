@@ -1,36 +1,111 @@
 // FourPlayer.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
 //
 
-#include <iostream>
-#include "SDL.h"
+#include "Defines.h"
+
+#include "Background.h"
+#include "RectangleDrawer.h"
+#include "Player.h"
+
 
 int main(int argc, char* argv[])
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
-        SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 1000, SDL_WINDOW_SHOWN);
-        SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
-        SDL_RenderClear(renderer);
+	Background* MyBackground = new Background();
+	RectangleDrawer* Playerbounds1 = new RectangleDrawer();
+	RectangleDrawer* Playerbounds2 = new RectangleDrawer();
+	RectangleDrawer* Playerbounds3 = new RectangleDrawer();
+	RectangleDrawer* Playerbounds4 = new RectangleDrawer();
 
-        SDL_RenderPresent(renderer);
+	Player* Player1 = new Player(ScreenWidth / 2 - (D_PlayerWidth / 2), ScreenHeight - D_PlayerAbstand + 1); //// Spawn Player Centered in Screen
 
-        SDL_Delay(3000);
+	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 
-       
+		SDL_Window* window = NULL;
+		SDL_Renderer* renderer = NULL;
+		
 
-    std::cout << "Hello World!\n";
-    return 0;
+
+
+
+		if (SDL_CreateWindowAndRenderer(ScreenWidth, ScreenHeight, 0, &window, &renderer) == 0) {
+
+			SDL_bool done = SDL_FALSE;
+
+			MyBackground->InitBackground(*renderer);
+
+
+
+			while (!done) {
+				int before = SDL_GetTicks();
+				SDL_Event event;
+				{}
+				SDL_RenderClear(renderer);
+
+				MyBackground->BackgroundRender(*renderer);
+
+
+				Playerbounds1->Render(*renderer, 0 - 1, 0 - 1, 255, 0, 0);																//// RED
+				Playerbounds2->Render(*renderer, ScreenWidth - D_PlayerAbstand + 1, 0 - 1, 0, 255, 0);									//// GREEN
+				Playerbounds3->Render(*renderer, ScreenWidth - D_PlayerAbstand + 1, ScreenHeight - D_PlayerAbstand + 1, 0, 0, 255);		//// BLUE
+				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_PlayerAbstand + 1, 255, 255, 0);								//// YELLOW
+
+
+
+				
+				Player1->Render(*renderer);
+				Player1->MovementInput();
+				Player1->Colission();
+
+
+
+
+
+
+
+
+
+
+
+
+				SDL_RenderPresent(renderer);
+			
+
+
+				int after = SDL_GetTicks();
+				int ticks = after - before;
+
+				if (ticks < 16)
+				{
+					SDL_Delay(16 - ticks);
+				}
+				ticks = SDL_GetTicks() - before;
+
+				while (SDL_PollEvent(&event)) {
+					if (event.type == SDL_QUIT) {
+						done = SDL_TRUE;
+					}
+				}
+			}
+		}
+
+
+		if (renderer) {
+			SDL_DestroyRenderer(renderer);
+		}
+		if (window) {
+			SDL_DestroyWindow(window);
+		}
+	}
+	delete MyBackground;
+	delete Player1;
+	delete Playerbounds1;
+	delete Playerbounds2;
+	delete Playerbounds3;
+	delete Playerbounds4;
+
+	SDL_Quit();
+
+	return 0;
 }
-
-// Programm ausführen: STRG+F5 oder Menüeintrag "Debuggen" > "Starten ohne Debuggen starten"
-// Programm debuggen: F5 oder "Debuggen" > Menü "Debuggen starten"
-
-// Tipps für den Einstieg: 
-//   1. Verwenden Sie das Projektmappen-Explorer-Fenster zum Hinzufügen/Verwalten von Dateien.
-//   2. Verwenden Sie das Team Explorer-Fenster zum Herstellen einer Verbindung mit der Quellcodeverwaltung.
-//   3. Verwenden Sie das Ausgabefenster, um die Buildausgabe und andere Nachrichten anzuzeigen.
-//   4. Verwenden Sie das Fenster "Fehlerliste", um Fehler anzuzeigen.
-//   5. Wechseln Sie zu "Projekt" > "Neues Element hinzufügen", um neue Codedateien zu erstellen, bzw. zu "Projekt" > "Vorhandenes Element hinzufügen", um dem Projekt vorhandene Codedateien hinzuzufügen.
-//   6. Um dieses Projekt später erneut zu öffnen, wechseln Sie zu "Datei" > "Öffnen" > "Projekt", und wählen Sie die SLN-Datei aus.
