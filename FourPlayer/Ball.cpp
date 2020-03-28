@@ -79,6 +79,7 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionX = DirectionX * -1;
 	}
 
+
 	if (BallPosX > ScreenWidth || BallPosX < 0 || BallPosY > ScreenHeight || BallPosY < 0)
 	{
 		BallPosX = ScreenWidth / 2 + D_BallRadius;

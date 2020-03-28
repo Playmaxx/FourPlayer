@@ -10,7 +10,7 @@
 #include "Ball.h"
 #include "NPC.h"
 
-std::vector<Ball> *ballsPointer;
+std::vector<Ball>* ballsPointer;
 
 int main(int argc, char* argv[])
 {
@@ -24,13 +24,13 @@ int main(int argc, char* argv[])
 
 	Player* Player1 = new Player(ScreenWidth / 2 - (D_BouncerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
 
-	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_BouncerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0);
+	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_BouncerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0, 1);
 
-	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0);
+	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0, 2);
 
-	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255);
+	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
-
+	
 
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 					ball.Render(*renderer);
 					ball.Movement();
 					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
-				}
+									}
 
 
 				Player1->Render(*renderer);
@@ -86,18 +86,18 @@ int main(int argc, char* argv[])
 
 
 
-
-
-
-
+				NPC1->Movement(&balls);
+				NPC1->Colission();
 				NPC1->Render(*renderer);
+
+				NPC2->Movement(&balls);
+				NPC2->Colission();
 				NPC2->Render(*renderer);
+
+				NPC3->Movement(&balls);
+				NPC3->Colission();
 				NPC3->Render(*renderer);
 
-				NPC1->Movement(std::vector<Ball> *balls);
-				NPC1->Movement(balls);
-
-				NPC1->Movement(&balls);
 
 
 

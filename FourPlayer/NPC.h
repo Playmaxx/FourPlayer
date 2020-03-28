@@ -1,13 +1,13 @@
 #pragma once
 #include "Defines.h"
-#include "Ball.h"
+class Ball;
 
 class NPC
 {
 
 public:
 
-	NPC(int PosX, int PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB);
+	NPC(int PosX, int PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB, int _Orientation);
 	~NPC();
 
 	void Render(SDL_Renderer& renderer);
@@ -25,7 +25,7 @@ public:
 		NPCPosY = y;
 	}
 
-	//std::vector<Ball> GetBallVector()
+	//std::vector<Ball> GetBallVector();
 
 	/*void inline SetNPCPositionX(std::vector<Ball> B) {
 		balls = B;
@@ -41,8 +41,9 @@ private:
 	int ColorR;
 	int ColorG;
 	int ColorB;
+	int Orientation;
 	
-	std::vector<Ball> balls;
+	//std::vector<Ball> balls;
 
 };
 

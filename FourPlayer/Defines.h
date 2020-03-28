@@ -4,6 +4,7 @@
 #include <iostream>
 #include "string"
 #include "vector"
+#include <cmath>
 
 static const int ScreenWidth = 1000;
 static const int ScreenHeight = 1000;
@@ -18,4 +19,4 @@ static const int D_NPCWidth = 125;
 
 
 static const int D_BallSpeed = 5;
-static const int D_BallRadius = 10;
+static const int D_BallRadius = 20;
