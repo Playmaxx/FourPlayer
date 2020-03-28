@@ -32,12 +32,13 @@ void NPC::Render(SDL_Renderer& renderer)
 
 }
 
-void NPC::Movement()
+void NPC::Movement(std::vector<Ball>* balls)
 {
-	for (auto& ball : balls) {
+	for (auto& ball : *balls) {
 		ball.GetBallPosX();
 		ball.GetBallPosY();
 	}
 
 
 }
+

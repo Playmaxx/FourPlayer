@@ -1,5 +1,6 @@
 #pragma once
 #include "Defines.h"
+#include "Ball.h"
 
 class NPC
 {
@@ -10,7 +11,7 @@ public:
 	~NPC();
 
 	void Render(SDL_Renderer& renderer);
-	void Movement();
+	void Movement(std::vector<Ball>* balls);
 
 	void Colission();
 
@@ -24,6 +25,12 @@ public:
 		NPCPosY = y;
 	}
 
+	//std::vector<Ball> GetBallVector()
+
+	/*void inline SetNPCPositionX(std::vector<Ball> B) {
+		balls = B;
+	}*/
+
 
 private:
 
@@ -34,7 +41,8 @@ private:
 	int ColorR;
 	int ColorG;
 	int ColorB;
-
+	
+	std::vector<Ball> balls;
 
 };
 
@@ -45,3 +53,6 @@ inline const int NPC::GetNPCPosY() {
 	return NPCPosY;
 }
 
+//inline const std::vector<Ball> NPC::GetBallVector() {
+//	return balls;
+//}

@@ -50,6 +50,7 @@ int main(int argc, char* argv[])
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
+			ballsPointer = &balls;
 			//----- adding new balls --------//
 			for (int i = 0; i < 10; i++)
 			{
@@ -93,8 +94,12 @@ int main(int argc, char* argv[])
 				NPC2->Render(*renderer);
 				NPC3->Render(*renderer);
 
+				NPC1->Movement(std::vector<Ball> *balls);
+				NPC1->Movement(balls);
 
-				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+				NPC1->Movement(&balls);
+
+
 
 
 				SDL_RenderPresent(renderer);
