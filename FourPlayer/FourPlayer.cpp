@@ -23,11 +23,6 @@ int main(int argc, char* argv[])
 
 	Player* Player1 = new Player(ScreenWidth / 2 - (D_PlayerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
 
-	//Ball* Ball1 = new Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius);
-	//std::vector<Ball> balls;
-
-	//balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
-
 	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_PlayerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0);
 
 	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0);
@@ -54,6 +49,12 @@ int main(int argc, char* argv[])
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
+			//----- adding new balls --------//
+			for (int i = 0; i < 10; i++)
+			{
+				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+			}
+
 
 			while (!done) {
 				int before = SDL_GetTicks();
@@ -77,9 +78,8 @@ int main(int argc, char* argv[])
 				Player1->Colission();
 
 
-				
-				//----- adding new balls --------//
-				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+
+
 				//----- calling their functions -//
 				for (auto& ball : balls) {
 					ball.Render(*renderer);
@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
 	delete Playerbounds2;
 	delete Playerbounds3;
 	delete Playerbounds4;
-	
+
 
 
 	SDL_Quit();
