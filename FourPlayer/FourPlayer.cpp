@@ -3,9 +3,12 @@
 
 #include "Defines.h"
 
+
 #include "Background.h"
 #include "RectangleDrawer.h"
 #include "Player.h"
+#include "Ball.h"
+#include "NPC.h"
 
 
 int main(int argc, char* argv[])
@@ -18,13 +21,27 @@ int main(int argc, char* argv[])
 	RectangleDrawer* Playerbounds3 = new RectangleDrawer();
 	RectangleDrawer* Playerbounds4 = new RectangleDrawer();
 
-	Player* Player1 = new Player(ScreenWidth / 2 - (D_PlayerWidth / 2), ScreenHeight - D_PlayerAbstand + 1); //// Spawn Player Centered in Screen
+	Player* Player1 = new Player(ScreenWidth / 2 - (D_PlayerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
+
+	//Ball* Ball1 = new Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius);
+	//std::vector<Ball> balls;
+
+	//balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+
+	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_PlayerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0);
+
+	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0);
+
+	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255);
+
+
+
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 
 		SDL_Window* window = NULL;
 		SDL_Renderer* renderer = NULL;
-		
+
 
 
 
@@ -35,7 +52,8 @@ int main(int argc, char* argv[])
 
 			MyBackground->InitBackground(*renderer);
 
-
+			//----- intializing vector somewhere in your code ----- //
+			std::vector<Ball> balls;
 
 			while (!done) {
 				int before = SDL_GetTicks();
@@ -47,30 +65,39 @@ int main(int argc, char* argv[])
 
 
 				Playerbounds1->Render(*renderer, 0 - 1, 0 - 1, 255, 0, 0);																//// RED
-				Playerbounds2->Render(*renderer, ScreenWidth - D_PlayerAbstand + 1, 0 - 1, 0, 255, 0);									//// GREEN
-				Playerbounds3->Render(*renderer, ScreenWidth - D_PlayerAbstand + 1, ScreenHeight - D_PlayerAbstand + 1, 0, 0, 255);		//// BLUE
-				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_PlayerAbstand + 1, 255, 255, 0);								//// YELLOW
+				Playerbounds2->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, 0 - 1, 0, 255, 0);									//// GREEN
+				Playerbounds3->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1, 0, 0, 255);		//// BLUE
+				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
 
 
 
-				
+
 				Player1->Render(*renderer);
 				Player1->MovementInput();
 				Player1->Colission();
 
 
+				
+				//----- adding new balls --------//
+				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+				//----- calling their functions -//
+				for (auto& ball : balls) {
+					ball.Render(*renderer);
+					ball.Movement();
+					ball.Collision(*Player1);
+				}
 
 
-
-
-
+				NPC1->Render(*renderer);
+				NPC2->Render(*renderer);
+				NPC3->Render(*renderer);
 
 
 
 
 
 				SDL_RenderPresent(renderer);
-			
+
 
 
 				int after = SDL_GetTicks();
@@ -104,6 +131,8 @@ int main(int argc, char* argv[])
 	delete Playerbounds2;
 	delete Playerbounds3;
 	delete Playerbounds4;
+	
+
 
 	SDL_Quit();
 

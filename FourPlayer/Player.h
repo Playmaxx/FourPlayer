@@ -14,6 +14,16 @@ public:
 	
 	void Colission();
 
+	int const GetPlayerPosX();
+	int const GetPlayerPosY();
+
+	void inline SetPlayerPositionX(int x) {
+		PlayerPosX = x;
+	}
+	void inline SetPlayerPositionY(int y) {
+		PlayerPosY = y;
+	}
+
 
 private:
 
@@ -22,19 +32,11 @@ private:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
+inline const int Player::GetPlayerPosX() {
+	return PlayerPosX;
+}
+inline const int Player::GetPlayerPosY() {
+	return PlayerPosY;
+}

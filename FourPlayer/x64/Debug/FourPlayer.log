@@ -1,4 +1,12 @@
-﻿  FourPlayer.cpp
+﻿  Background.cpp
+  Ball.cpp
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(6,10): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(7,10): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(17,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(18,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+  FourPlayer.cpp
+  NPC.cpp
   Player.cpp
+  RectangleDrawer.cpp
   Code wird generiert...
   FourPlayer.vcxproj -> E:\GitKraken\FourPlayer\FourPlayer\x64\Debug\FourPlayer.exe

@@ -21,10 +21,10 @@ void Player::Render(SDL_Renderer& renderer)
 	PlayerBox.h = D_PlayerHeight;
 
 	SDL_SetRenderDrawColor(&renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
-	SDL_RenderDrawRect(&renderer, &PlayerBox);
+	SDL_RenderFillRect(&renderer, &PlayerBox);
 
 
-}
+} 
 
 void Player::MovementInput()
 {
@@ -41,13 +41,13 @@ void Player::MovementInput()
 void Player::Colission()
 {
 
-	if (PlayerPosX >= ScreenWidth - D_PlayerAbstand - D_PlayerWidth + 1)
+	if (PlayerPosX >= ScreenWidth - D_RectangleSpace - D_PlayerWidth + 1)
 	{
-		PlayerPosX = ScreenWidth - D_PlayerAbstand - D_PlayerWidth + 1;
+		PlayerPosX = ScreenWidth - D_RectangleSpace - D_PlayerWidth + 1;
 	}
 
-	if (PlayerPosX <= 0 + D_PlayerAbstand - 1)
+	if (PlayerPosX <= 0 + D_RectangleSpace - 1)
 	{
-		PlayerPosX = 0 + D_PlayerAbstand - 1;
+		PlayerPosX = 0 + D_RectangleSpace - 1;
 	}
 }
