@@ -31,3 +31,13 @@ void NPC::Render(SDL_Renderer& renderer)
 
 
 }
+
+void NPC::Movement()
+{
+	for (auto& ball : balls) {
+		ball.GetBallPosX();
+		ball.GetBallPosY();
+	}
+
+
+}

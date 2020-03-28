@@ -1,11 +1,32 @@
-﻿FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_CreateWindow" in Funktion "_SDL_main".
-FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_CreateRenderer" in Funktion "_SDL_main".
-FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_SetRenderDrawColor" in Funktion "_SDL_main".
-FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_RenderClear" in Funktion "_SDL_main".
+﻿  NPC.cpp
+  Player.cpp
+  RectangleDrawer.cpp
+  Code wird generiert...
+Background.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_FreeSurface" in Funktion ""public: void __thiscall Background::InitBackground(struct SDL_Renderer &)" (?InitBackground@Background@@QAEXAAUSDL_Renderer@@@Z)".
+Background.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_CreateTextureFromSurface" in Funktion ""public: void __thiscall Background::InitBackground(struct SDL_Renderer &)" (?InitBackground@Background@@QAEXAAUSDL_Renderer@@@Z)".
+Background.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_RenderClear" in Funktion ""public: void __thiscall Background::BackgroundRender(struct SDL_Renderer &)" (?BackgroundRender@Background@@QAEXAAUSDL_Renderer@@@Z)".
+FourPlayer.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_RenderClear".
+Background.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_RenderCopy" in Funktion ""public: void __thiscall Background::BackgroundRender(struct SDL_Renderer &)" (?BackgroundRender@Background@@QAEXAAUSDL_Renderer@@@Z)".
+Background.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_IMG_Load" in Funktion ""public: void __thiscall Background::InitBackground(struct SDL_Renderer &)" (?InitBackground@Background@@QAEXAAUSDL_Renderer@@@Z)".
+Ball.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_SetRenderDrawColor" in Funktion ""public: void __thiscall Ball::Render(struct SDL_Renderer &)" (?Render@Ball@@QAEXAAUSDL_Renderer@@@Z)".
+NPC.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_SetRenderDrawColor".
+Player.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_SetRenderDrawColor".
+RectangleDrawer.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_SetRenderDrawColor".
+Ball.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_RenderFillRect" in Funktion ""public: void __thiscall Ball::Render(struct SDL_Renderer &)" (?Render@Ball@@QAEXAAUSDL_Renderer@@@Z)".
+NPC.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_RenderFillRect".
+Player.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_RenderFillRect".
+RectangleDrawer.obj : error LNK2001: Nicht aufgelöstes externes Symbol "_SDL_RenderFillRect".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_DestroyWindow" in Funktion "_SDL_main".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_PollEvent" in Funktion "_SDL_main".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_CreateWindowAndRenderer" in Funktion "_SDL_main".
 FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_RenderPresent" in Funktion "_SDL_main".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_DestroyRenderer" in Funktion "_SDL_main".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_GetTicks" in Funktion "_SDL_main".
 FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_Delay" in Funktion "_SDL_main".
 FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_Init" in Funktion "_SDL_main".
+FourPlayer.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_Quit" in Funktion "_SDL_main".
+Player.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_SDL_GetKeyboardState" in Funktion ""public: void __thiscall Player::MovementInput(void)" (?MovementInput@Player@@QAEXXZ)".
 MSVCRTD.lib(exe_main.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_main" in Funktion ""int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)".
 E:\GitKraken\FourPlayer\SDL2-2.0.10\lib\x64\SDL2.lib : warning LNK4272: Bibliothekcomputertyp "x64" steht in Konflikt mit dem Zielcomputertyp "x86"
 E:\GitKraken\FourPlayer\SDL2-2.0.10\lib\x64\SDL2main.lib : warning LNK4272: Bibliothekcomputertyp "x64" steht in Konflikt mit dem Zielcomputertyp "x86"
-E:\GitKraken\FourPlayer\FourPlayer\Debug\FourPlayer.exe : fatal error LNK1120: 8 nicht aufgelöste Externe
+E:\GitKraken\FourPlayer\FourPlayer\Debug\FourPlayer.exe : fatal error LNK1120: 18 nicht aufgelöste Externe

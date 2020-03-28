@@ -10,8 +10,8 @@ static const int ScreenHeight = 1000;
 static const int D_RectangleSpace = 100;
 static const int D_PlayerSpeed = 10;
 
-static const int D_PlayerHeight = 50;
-static const int D_PlayerWidth = 125;
+static const int D_BouncerHeight = 50;
+static const int D_BouncerWidth = 125;
 
 static const int D_NPCHeight = 50;
 static const int D_NPCWidth = 125;

@@ -1,6 +1,7 @@
 #pragma once
 #include "Defines.h"
 #include "Player.h"
+#include "NPC.h"
 
 class Ball
 {
@@ -11,7 +12,18 @@ public:
 
 	void Render(SDL_Renderer& renderer);
 	void Movement();
-	void Collision(Player& Player1);
+	void Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3);
+
+
+	int const GetBallPosX();
+	int const GetBallPosY();
+
+	void inline SetBallPositionX(int x) {
+		BallPosX = x;
+	}
+	void inline SetBallPositionY(int y) {
+		BallPosY = y;
+	}
 
 private:
 
@@ -25,7 +37,11 @@ private:
 
 	
 
-
-
 };
 
+inline const int Ball::GetBallPosX() {
+	return BallPosX;
+}
+inline const int Ball::GetBallPosY() {
+	return BallPosY;
+}

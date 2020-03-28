@@ -10,6 +10,7 @@
 #include "Ball.h"
 #include "NPC.h"
 
+std::vector<Ball> *ballsPointer;
 
 int main(int argc, char* argv[])
 {
@@ -21,9 +22,9 @@ int main(int argc, char* argv[])
 	RectangleDrawer* Playerbounds3 = new RectangleDrawer();
 	RectangleDrawer* Playerbounds4 = new RectangleDrawer();
 
-	Player* Player1 = new Player(ScreenWidth / 2 - (D_PlayerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
+	Player* Player1 = new Player(ScreenWidth / 2 - (D_BouncerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
 
-	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_PlayerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0);
+	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_BouncerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0);
 
 	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0);
 
@@ -70,7 +71,12 @@ int main(int argc, char* argv[])
 				Playerbounds3->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1, 0, 0, 255);		//// BLUE
 				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
 
-
+								//----- calling their functions -//
+				for (auto& ball : balls) {
+					ball.Render(*renderer);
+					ball.Movement();
+					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
+				}
 
 
 				Player1->Render(*renderer);
@@ -80,12 +86,7 @@ int main(int argc, char* argv[])
 
 
 
-				//----- calling their functions -//
-				for (auto& ball : balls) {
-					ball.Render(*renderer);
-					ball.Movement();
-					ball.Collision(*Player1);
-				}
+
 
 
 				NPC1->Render(*renderer);
@@ -93,7 +94,7 @@ int main(int argc, char* argv[])
 				NPC3->Render(*renderer);
 
 
-
+				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
 
 
 				SDL_RenderPresent(renderer);
