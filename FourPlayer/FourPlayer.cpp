@@ -9,12 +9,13 @@
 #include "Player.h"
 #include "Ball.h"
 #include "NPC.h"
+#include "Menu.h"
 
 std::vector<Ball>* ballsPointer;
 
 int main(int argc, char* argv[])
 {
-
+	TTF_Init();
 
 	Background* MyBackground = new Background();
 	RectangleDrawer* Playerbounds1 = new RectangleDrawer();
@@ -30,10 +31,11 @@ int main(int argc, char* argv[])
 
 	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
-
+	Menu* MainMenu = new Menu;
 
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
+
 
 		SDL_Window* window = NULL;
 		SDL_Renderer* renderer = NULL;
@@ -47,6 +49,7 @@ int main(int argc, char* argv[])
 			SDL_bool done = SDL_FALSE;
 
 			MyBackground->InitBackground(*renderer);
+			MainMenu->InitMenu(*renderer);
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
@@ -72,12 +75,9 @@ int main(int argc, char* argv[])
 				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
 
 
-
-
 				Player1->Render(*renderer);
 				Player1->MovementInput();
 				Player1->Colission();
-
 
 
 				NPC1->Movement(&balls);
@@ -91,6 +91,8 @@ int main(int argc, char* argv[])
 				NPC3->Movement(&balls);
 				NPC3->Colission();
 				NPC3->Render(*renderer);
+
+				MainMenu->Render(*renderer);
 
 
 				//----- calling their functions -//
@@ -141,6 +143,6 @@ int main(int argc, char* argv[])
 
 
 	SDL_Quit();
-
+	TTF_Quit();
 	return 0;
 }

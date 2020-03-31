@@ -19,7 +19,7 @@ void Background::InitBackground(SDL_Renderer& renderer)
 void Background::BackgroundRender(SDL_Renderer& renderer)
 {
 
-	SDL_RenderClear(&renderer);
+
 	SDL_RenderCopy(&renderer, BackgroundTex, NULL, NULL);
 
 }

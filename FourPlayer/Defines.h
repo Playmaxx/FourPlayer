@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 #include <iostream>
 #include "string"
 #include "vector"
@@ -9,7 +10,7 @@
 static const int ScreenWidth = 1000;
 static const int ScreenHeight = 1000;
 static const int D_RectangleSpace = 100;
-static const int D_PlayerSpeed = 10;
+static const float D_PlayerSpeed = 10;
 
 static const int D_BouncerHeight = 50;
 static const int D_BouncerWidth = 125;

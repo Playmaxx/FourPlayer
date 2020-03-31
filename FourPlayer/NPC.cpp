@@ -33,45 +33,26 @@ void NPC::Render(SDL_Renderer& renderer)
 
 }
 
-void NPC::Movement(std::vector<Ball>* balls)
+void NPC::Movement(std::vector<Ball> *balls)
 {
 	Ball tempBallX = *balls->begin();
 	Ball tempBallY = *balls->begin();
-	float tempDistanceX = 500;
+	float tempDistanceX = FLT_MAX;
 	float tempDistanceY = FLT_MAX;
+
+	//balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
 
 	for (auto& ball : *balls) {
 
-		float tempX = ball.GetBallPosX() - NPCPosX;
+		float tempX = abs(ball.GetBallPosX() - NPCPosX);
 
-		
-
-		if (ball.GetBallDirectionX() <= 0) {
-			//std::cout << ball.GetBallDirectionX() << "\n";
-			if (tempX < tempDistanceX)
-			{
-				tempDistanceX = tempX;
-				tempBallX = ball;
-			}
+		if (tempX < tempDistanceX)
+		{
+			tempDistanceX = tempX;
+			tempBallX = ball;
 		}
 
-		if (ball.GetBallDirectionX() >= 0) {
-			//std::cout << ball.GetBallDirectionX() << "\n";
-			if (tempX > tempDistanceX) ///// HIER FIXEN
-			{
-				tempDistanceX = tempX;
-				tempBallX = ball;
-			}
-		}
-
-
-		/*	if (tempX > tempDistanceX && ball.GetBallDirectionX() >= 0)
-			{
-				tempDistanceX = tempX;
-				tempBallX = ball;
-			}*/
-
-		float tempY = ball.GetBallPosY() - NPCPosY;
+		float tempY = abs(ball.GetBallPosY() - NPCPosY);
 
 		if (tempY < tempDistanceY)
 		{

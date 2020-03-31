@@ -11,7 +11,7 @@ public:
 	~NPC();
 
 	void Render(SDL_Renderer& renderer);
-	void Movement(std::vector<Ball>* balls);
+	void Movement(std::vector<Ball> *balls);
 
 	void Colission();
 
