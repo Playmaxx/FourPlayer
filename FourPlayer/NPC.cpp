@@ -2,7 +2,7 @@
 #include "Ball.h"
 
 
-NPC::NPC(int PosX, int PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB, int _Orientation) :
+NPC::NPC(float PosX, float PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB, int _Orientation) :
 
 	NPCPosX(PosX),
 	NPCPosY(PosY),
@@ -35,35 +35,67 @@ void NPC::Render(SDL_Renderer& renderer)
 
 void NPC::Movement(std::vector<Ball>* balls)
 {
-	Ball tempBall = *balls->begin();
-	int tempDistance = INT_MAX;
+	Ball tempBallX = *balls->begin();
+	Ball tempBallY = *balls->begin();
+	float tempDistanceX = 500;
+	float tempDistanceY = FLT_MAX;
 
 	for (auto& ball : *balls) {
 
-		int temp = hypot(ball.GetBallPosX() - NPCPosX, ball.GetBallPosY() - NPCPosY);
-		if (temp < tempDistance)
-		{
-			tempDistance = temp;
-			tempBall = ball;
+		float tempX = ball.GetBallPosX() - NPCPosX;
 
+		
+
+		if (ball.GetBallDirectionX() <= 0) {
+			//std::cout << ball.GetBallDirectionX() << "\n";
+			if (tempX < tempDistanceX)
+			{
+				tempDistanceX = tempX;
+				tempBallX = ball;
+			}
+		}
+
+		if (ball.GetBallDirectionX() >= 0) {
+			//std::cout << ball.GetBallDirectionX() << "\n";
+			if (tempX > tempDistanceX) ///// HIER FIXEN
+			{
+				tempDistanceX = tempX;
+				tempBallX = ball;
+			}
+		}
+
+
+		/*	if (tempX > tempDistanceX && ball.GetBallDirectionX() >= 0)
+			{
+				tempDistanceX = tempX;
+				tempBallX = ball;
+			}*/
+
+		float tempY = ball.GetBallPosY() - NPCPosY;
+
+		if (tempY < tempDistanceY)
+		{
+			tempDistanceY = tempY;
+			tempBallY = ball;
 		}
 
 	}
-	std::cout << tempDistance << "\n";
+
 	if (Orientation == 1)
 	{
 
-		if (tempBall.GetBallPosX() - NPCPosX > 0)
+		if ((tempBallY.GetBallPosX() + D_BallRadius) - (NPCPosX + D_BouncerWidth / 2) > 0)
 			NPCPosX = NPCPosX + D_PlayerSpeed;
-		if (tempBall.GetBallPosX() - NPCPosX < 0)
+		if ((tempBallY.GetBallPosX() + D_BallRadius) - (NPCPosX + D_BouncerWidth / 2) < 0)
 			NPCPosX = NPCPosX - D_PlayerSpeed;
 	}
+
 	if (Orientation == 2)
 	{
 
-		if (tempBall.GetBallPosY() - NPCPosY > 0)
+		if ((tempBallX.GetBallPosY() + D_BallRadius) - (NPCPosY + D_BouncerWidth / 2) > 0)
 			NPCPosY = NPCPosY + D_PlayerSpeed;
-		if (tempBall.GetBallPosY() - NPCPosY < 0)
+		if ((tempBallX.GetBallPosY() + D_BallRadius) - (NPCPosY + D_BouncerWidth / 2) < 0)
 			NPCPosY = NPCPosY - D_PlayerSpeed;
 	}
 
@@ -72,7 +104,8 @@ void NPC::Movement(std::vector<Ball>* balls)
 
 void NPC::Colission()
 {
-	if (Orientation == 1) {
+	if (Orientation == 1)
+	{
 		if (NPCPosX >= ScreenWidth - D_RectangleSpace - D_BouncerWidth + 1)
 		{
 			NPCPosX = ScreenWidth - D_RectangleSpace - D_BouncerWidth + 1;
@@ -83,7 +116,8 @@ void NPC::Colission()
 			NPCPosX = 0 + D_RectangleSpace - 1;
 		}
 	}
-	if (Orientation == 2) {
+	if (Orientation == 2)
+	{
 		if (NPCPosY >= ScreenWidth - D_RectangleSpace - D_BouncerWidth + 1)
 		{
 			NPCPosY = ScreenWidth - D_RectangleSpace - D_BouncerWidth + 1;

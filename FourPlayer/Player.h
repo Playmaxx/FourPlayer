@@ -6,7 +6,7 @@ class Player
 
 public:
 
-	Player(int PosX, int PosY);
+	Player(float PosX, float PosY);
 	~Player();
 
 	void Render(SDL_Renderer& renderer);
@@ -27,8 +27,8 @@ public:
 
 private:
 
-	int PlayerPosX;
-	int PlayerPosY;
+	float PlayerPosX;
+	float PlayerPosY;
 
 
 

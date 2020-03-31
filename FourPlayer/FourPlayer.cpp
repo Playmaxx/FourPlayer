@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 
 	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
-	
+
 
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
@@ -50,11 +50,10 @@ int main(int argc, char* argv[])
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
-			ballsPointer = &balls;
 			//----- adding new balls --------//
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < 2; i++)
 			{
-				balls.push_back(Ball(ScreenWidth / 2 - D_BallRadius, ScreenHeight / 2 - D_BallRadius));
+				balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
 			}
 
 
@@ -72,12 +71,7 @@ int main(int argc, char* argv[])
 				Playerbounds3->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1, 0, 0, 255);		//// BLUE
 				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
 
-								//----- calling their functions -//
-				for (auto& ball : balls) {
-					ball.Render(*renderer);
-					ball.Movement();
-					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
-									}
+
 
 
 				Player1->Render(*renderer);
@@ -99,7 +93,13 @@ int main(int argc, char* argv[])
 				NPC3->Render(*renderer);
 
 
-
+				//----- calling their functions -//
+				for (auto& ball : balls) {
+					ball.Render(*renderer);
+					ball.Movement();
+					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
+					ball.OutOfBounds();
+				}
 
 
 				SDL_RenderPresent(renderer);

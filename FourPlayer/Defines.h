@@ -18,5 +18,8 @@ static const int D_NPCHeight = 50;
 static const int D_NPCWidth = 125;
 
 
-static const int D_BallSpeed = 5;
-static const int D_BallRadius = 20;
+static const float D_BallSpeed = 5;
+static const int D_BallDiameter = 20;
+static const int D_BallRadius = D_BallDiameter / 2;
+
+static const int D_BallDestructorRange = 50;

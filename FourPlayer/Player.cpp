@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Player::Player(int PosX, int PosY) :
+Player::Player(float PosX, float PosY) :
 
 	PlayerPosX(PosX),
 	PlayerPosY(PosY)

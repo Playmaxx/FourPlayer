@@ -7,7 +7,7 @@ class NPC
 
 public:
 
-	NPC(int PosX, int PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB, int _Orientation);
+	NPC(float PosX, float PosY, int _Width, int _Height, int _ColorR, int _ColorG, int _ColorB, int _Orientation);
 	~NPC();
 
 	void Render(SDL_Renderer& renderer);
@@ -15,13 +15,13 @@ public:
 
 	void Colission();
 
-	int const GetNPCPosX();
-	int const GetNPCPosY();
+	float const GetNPCPosX();
+	float const GetNPCPosY();
 
-	void inline SetNPCPositionX(int x) {
+	void inline SetNPCPositionX(float x) {
 		NPCPosX = x;
 	}
-	void inline SetNPCPositionY(int y) {
+	void inline SetNPCPositionY(float y) {
 		NPCPosY = y;
 	}
 
@@ -34,8 +34,8 @@ public:
 
 private:
 
-	int NPCPosX;
-	int NPCPosY;
+	float NPCPosX;
+	float NPCPosY;
 	int NPCWidth;
 	int NPCHeight;
 	int ColorR;
@@ -47,10 +47,10 @@ private:
 
 };
 
-inline const int NPC::GetNPCPosX() {
+inline const float NPC::GetNPCPosX() {
 	return NPCPosX;
 }
-inline const int NPC::GetNPCPosY() {
+inline const float NPC::GetNPCPosY() {
 	return NPCPosY;
 }
 
