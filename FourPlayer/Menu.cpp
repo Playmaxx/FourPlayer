@@ -12,7 +12,6 @@ void Menu::InitMenu(SDL_Renderer& renderer)
 {
 
 
-	White = { 255, 255, 255 };
 	surfaceMessage = TTF_RenderText_Blended(MenuFont, "Play", White);
 	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
 
@@ -21,8 +20,6 @@ void Menu::InitMenu(SDL_Renderer& renderer)
 	Message_rect.h = 100; // controls the height of the rect
 	Message_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
 	Message_rect.y = ScreenHeight / 2 - Message_rect.h / 2; // controls the rect's y coordinte
-
-
 
 }
 
