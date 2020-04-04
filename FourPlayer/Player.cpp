@@ -1,5 +1,5 @@
 #include "Player.h"
-
+SDL_Texture* PlayerTex;
 
 Player::Player(float PosX, float PosY) :
 
@@ -11,6 +11,14 @@ Player::Player(float PosX, float PosY) :
 Player::~Player()
 {};
 
+void Player::InitTextures(SDL_Renderer& renderer)
+{
+
+	SDL_Surface* tmpSurface = IMG_Load("Textures/Background.bmp");
+	PlayerTex = SDL_CreateTextureFromSurface(&renderer, tmpSurface);
+
+}
+
 
 void Player::Render(SDL_Renderer& renderer)
 {
@@ -21,7 +29,9 @@ void Player::Render(SDL_Renderer& renderer)
 	PlayerBox.h = D_BouncerHeight;
 
 	SDL_SetRenderDrawColor(&renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
-	SDL_RenderFillRect(&renderer, &PlayerBox);
+
+	SDL_RenderCopy(&renderer, PlayerTex, NULL, &PlayerBox);
+//	SDL_RenderFillRect(&renderer, &PlayerBox);
 
 
 } 

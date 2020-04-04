@@ -9,6 +9,8 @@ public:
 	Player(float PosX, float PosY);
 	~Player();
 
+	void InitTextures(SDL_Renderer& renderer);
+
 	void Render(SDL_Renderer& renderer);
 	void MovementInput();
 	

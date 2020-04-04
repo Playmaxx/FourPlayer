@@ -10,6 +10,7 @@
 #include "Ball.h"
 #include "NPC.h"
 #include "Menu.h"
+#include "PointCounter.h"
 
 std::vector<Ball>* ballsPointer;
 
@@ -33,6 +34,12 @@ int main(int argc, char* argv[])
 
 	Menu* MainMenu = new Menu;
 
+	PointCounter* Red = new PointCounter(0 - 1, 0 - 1);
+	PointCounter* Green = new PointCounter(ScreenWidth - D_RectangleSpace + 1, 0 - 1);
+	PointCounter* Blue = new PointCounter(ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1);
+	PointCounter* Yellow = new PointCounter(0 - 1, ScreenHeight - D_RectangleSpace + 1);
+
+
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 
@@ -49,12 +56,16 @@ int main(int argc, char* argv[])
 			SDL_bool done = SDL_FALSE;
 
 			MyBackground->InitBackground(*renderer);
-			MainMenu->InitMenu(*renderer);
+			MainMenu->InitMenu(*renderer, D_RectangleSpace, D_RectangleSpace);
+			Red->InitPoints(*renderer);
+			Green->InitPoints(*renderer);
+			Blue->InitPoints(*renderer);
+			Yellow->InitPoints(*renderer);
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
 			//----- adding new balls --------//
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 20; i++)
 			{
 				balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
 			}
@@ -92,7 +103,12 @@ int main(int argc, char* argv[])
 				NPC3->Colission();
 				NPC3->Render(*renderer);
 
-				MainMenu->Render(*renderer);
+				//inMenu->Render(*renderer);
+				Red->Render(*renderer);
+				Green->Render(*renderer);
+				Blue->Render(*renderer);
+				Yellow->Render(*renderer);
+
 
 
 				//----- calling their functions -//
@@ -100,8 +116,10 @@ int main(int argc, char* argv[])
 					ball.Render(*renderer);
 					ball.Movement();
 					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
-					ball.OutOfBounds();
+					ball.OutOfBounds(*renderer, *Red, *Green, *Blue, *Yellow);
 				}
+
+
 
 
 				SDL_RenderPresent(renderer);

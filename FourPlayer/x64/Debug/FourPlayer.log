@@ -1,27 +1,48 @@
-﻿  FourPlayer.cpp
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(21,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(24,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(38,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(41,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(24,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+﻿  Background.cpp
+  Ball.cpp
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(23,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(26,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(40,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(43,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.h(27,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(30,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(30,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.h(33,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(53,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(56,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-  Menu.cpp
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(36,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(61,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(64,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(17,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(18,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(42,27): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+  FourPlayer.cpp
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(23,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(26,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(40,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(43,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(27,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(30,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(33,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(36,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(61,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(64,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
   NPC.cpp
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(21,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(24,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(38,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Player.h(41,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(24,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(23,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(26,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(40,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(43,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.h(27,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(30,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(30,14): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.h(33,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(53,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
-E:\GitKraken\FourPlayer\FourPlayer\Ball.h(56,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(36,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(61,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.h(64,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\NPC.cpp(25,13): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\NPC.cpp(26,13): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+  Player.cpp
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(23,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(26,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(40,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.h(43,9): warning C4244: "return": Konvertierung von "float" in "const int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.cpp(26,16): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Player.cpp(27,16): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
   Code wird generiert...
   FourPlayer.vcxproj -> E:\GitKraken\FourPlayer\FourPlayer\x64\Debug\FourPlayer.exe

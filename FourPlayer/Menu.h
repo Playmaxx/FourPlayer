@@ -8,7 +8,7 @@ public:
 	Menu();
 	~Menu();
 
-	void InitMenu(SDL_Renderer& renderer);
+	void InitMenu(SDL_Renderer& renderer, int _width, int _height);
 	void Render(SDL_Renderer& renderer);
 
 

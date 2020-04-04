@@ -8,16 +8,16 @@ Menu::Menu() :
 Menu::~Menu()
 {}
 
-void Menu::InitMenu(SDL_Renderer& renderer)
+void Menu::InitMenu(SDL_Renderer& renderer, int _width, int _height)
 {
 
 
-	surfaceMessage = TTF_RenderText_Blended(MenuFont, "Play", White);
+	surfaceMessage = TTF_RenderText_Blended(MenuFont, "std::string _Message", White);
 	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
 
 
-	Message_rect.w = 200; // controls the width of the rect
-	Message_rect.h = 100; // controls the height of the rect
+	Message_rect.w = _width; // controls the width of the rect
+	Message_rect.h = _height; // controls the height of the rect
 	Message_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
 	Message_rect.y = ScreenHeight / 2 - Message_rect.h / 2; // controls the rect's y coordinte
 
@@ -26,4 +26,5 @@ void Menu::InitMenu(SDL_Renderer& renderer)
 void Menu::Render(SDL_Renderer& renderer)
 {
 	SDL_RenderCopy(&renderer, Message, NULL, &Message_rect);
+
 }

@@ -18,7 +18,9 @@ void Ball::Render(SDL_Renderer& renderer)
 	BallBox.y = BallPosY;
 	BallBox.w = D_BallDiameter;
 	BallBox.h = D_BallDiameter;
-	SDL_SetRenderDrawColor(&renderer, R, G, B, SDL_ALPHA_OPAQUE);
+
+
+	SDL_SetRenderDrawColor(&renderer, cColor.r, cColor.g, cColor.b, SDL_ALPHA_OPAQUE);
 
 	SDL_RenderFillRect(&renderer, &BallBox);
 
@@ -52,6 +54,7 @@ void Ball::Movement()
 
 void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 {
+
 	if (BallPosX + D_BallRadius >= Player1.GetPlayerPosX() &&
 		BallPosX + D_BallRadius <= Player1.GetPlayerPosX() + D_BouncerWidth &&
 		BallPosY + D_BallRadius >= Player1.GetPlayerPosY() &&
@@ -61,9 +64,8 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 
 			DirectionY = DirectionY * -1;
 			DirectionX = DirectionX * ((BallPosX + D_BallRadius - (Player1.GetPlayerPosX() + D_BouncerWidth / 2)) / D_BouncerWidth);
-			R = 255;
-			G = 255;
-			B = 0;
+			cColor = cYellow;
+
 		}
 	}
 
@@ -75,9 +77,8 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 	{
 		if (DirectionY < 0) {
 			DirectionY = DirectionY * -1;
-			R = 0;
-			G = 255;
-			B = 0;
+			cColor = cGreen;
+
 		}
 	}
 
@@ -88,9 +89,8 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 	{
 		if (DirectionX < 0) {
 			DirectionX = DirectionX * -1;
-			R = 255;
-			G = 0;
-			B = 0;
+			cColor = cRed;
+
 		}
 	}
 
@@ -101,23 +101,43 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 	{
 		if (DirectionX > 0) {
 			DirectionX = DirectionX * -1;
-			R = 0;
-			G = 0;
-			B = 255;
+			cColor = cBlue;
+
 		}
 	}
 
 }
-void Ball::OutOfBounds()
+void Ball::OutOfBounds(SDL_Renderer& renderer, PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow)
 {
 	if (BallPosX > ScreenWidth || BallPosX < 0 || BallPosY > ScreenHeight || BallPosY < 0)
 	{
+		if (cColor.r == cYellow.r && cColor.g == cYellow.g && cColor.b == cYellow.b) {
+
+			Yellow.UpdatePoints(renderer);
+			//std::cout << "Yellow Point" << "\n";
+		}
+		if (cColor.r == cRed.r && cColor.g == cRed.g && cColor.b == cRed.b) {
+
+			Red.UpdatePoints(renderer);
+			//std::cout << "Red Point" << "\n";
+		}
+		if (cColor.r == cGreen.r && cColor.g == cGreen.g && cColor.b == cGreen.b) {
+
+			Green.UpdatePoints(renderer);
+			//std::cout << "Green Point" << "\n";
+		}
+		if (cColor.r == cBlue.r && cColor.g == cBlue.g && cColor.b == cBlue.b) {
+
+			Blue.UpdatePoints(renderer);
+			//std::cout << "Blue Point" << "\n";
+		}
+
 		BallPosX = ScreenWidth / 2 + D_BallDiameter;
 		BallPosY = ScreenHeight / 2 + D_BallDiameter;
-		R = 255;
-		G = 255;
-		B = 255;
+		cColor = cWhite;
+
 		DirectionX = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
 		DirectionY = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
 	}
 }
+
