@@ -12,7 +12,7 @@ public:
 
 	void Render(SDL_Renderer& renderer);
 	void Movement(std::vector<Ball> *balls);
-
+	void InitTextures(SDL_Renderer& renderer, std::string TexturName);
 	void Colission();
 
 	float const GetNPCPosX();
@@ -33,6 +33,8 @@ public:
 
 
 private:
+
+	SDL_Texture* NPCTex;
 
 	float NPCPosX;
 	float NPCPosY;

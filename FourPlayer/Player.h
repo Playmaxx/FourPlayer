@@ -31,7 +31,7 @@ private:
 
 	float PlayerPosX;
 	float PlayerPosY;
-
+	SDL_Texture* PlayerTex;
 
 
 };

@@ -18,7 +18,14 @@ NPC::NPC(float PosX, float PosY, int _Width, int _Height, int _ColorR, int _Colo
 NPC::~NPC()
 {};
 
+void NPC::InitTextures(SDL_Renderer& renderer, std::string TexturName)
+{
 
+	std::string texturpfad = "Textures/" + TexturName;
+	SDL_Surface* tmpSurface = IMG_Load(texturpfad.c_str());
+	NPCTex = SDL_CreateTextureFromSurface(&renderer, tmpSurface);
+
+}
 void NPC::Render(SDL_Renderer& renderer)
 {
 	SDL_Rect NPCBox;
@@ -27,8 +34,7 @@ void NPC::Render(SDL_Renderer& renderer)
 	NPCBox.w = NPCWidth;
 	NPCBox.h = NPCHeight;
 
-	SDL_SetRenderDrawColor(&renderer, ColorR, ColorG, ColorB, SDL_ALPHA_OPAQUE);
-	SDL_RenderFillRect(&renderer, &NPCBox);
+	SDL_RenderCopy(&renderer, NPCTex, NULL, &NPCBox);
 
 
 }

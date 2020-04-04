@@ -17,6 +17,8 @@ std::vector<Ball>* ballsPointer;
 int main(int argc, char* argv[])
 {
 	TTF_Init();
+	IMG_Init(IMG_INIT_PNG);
+	IMG_Init(IMG_INIT_JPG);
 
 	Background* MyBackground = new Background();
 	RectangleDrawer* Playerbounds1 = new RectangleDrawer();
@@ -56,6 +58,11 @@ int main(int argc, char* argv[])
 			SDL_bool done = SDL_FALSE;
 
 			MyBackground->InitBackground(*renderer);
+			Player1->InitTextures(*renderer);
+			NPC1->InitTextures(*renderer, "Bouncer2.bmp");
+			NPC2->InitTextures(*renderer, "Bouncer3.bmp");
+			NPC3->InitTextures(*renderer, "Bouncer4.bmp");
+
 			MainMenu->InitMenu(*renderer, D_RectangleSpace, D_RectangleSpace);
 			Red->InitPoints(*renderer);
 			Green->InitPoints(*renderer);

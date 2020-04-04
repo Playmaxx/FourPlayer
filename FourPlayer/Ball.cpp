@@ -29,6 +29,8 @@ void Ball::Render(SDL_Renderer& renderer)
 void Ball::Movement()
 {
 
+	BallPosX = BallPosX + DirectionX * D_BallSpeed;
+	BallPosY = BallPosY + DirectionY * D_BallSpeed;
 	//std::cout << "DirectionX " << DirectionX << "\n";
 	//std::cout << "DirectionY " << DirectionY << "\n";
 
@@ -42,15 +44,10 @@ void Ball::Movement()
 		DirectionY = DirectionY * 2.0;
 	}
 
-	if (DirectionX * DirectionY != 0)
-	{
-		BallPosX = BallPosX + DirectionX * D_BallSpeed;
-		BallPosY = BallPosY + DirectionY * D_BallSpeed;
-	}
+
+
 
 }
-
-
 
 void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 {
@@ -63,12 +60,22 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 		if (DirectionY > 0) {
 
 			DirectionY = DirectionY * -1;
-			DirectionX = DirectionX * ((BallPosX + D_BallRadius - (Player1.GetPlayerPosX() + D_BouncerWidth / 2)) / D_BouncerWidth);
 			cColor = cYellow;
+			std::cout << "DirectionY" << DirectionY << "\n";
 
+			int deltaX = abs(BallPosX - Player1.GetPlayerPosX());
+			if (deltaX > D_BouncerWidth / 3 &&
+				deltaX < D_BouncerWidth / 3 * 2)
+			{
+				DirectionX = 0;
+				DirectionY = DirectionY * 1.5;
+				std::cout << "DirectionX" << DirectionX << "\n";
+			}
 		}
-	}
 
+
+
+	}
 
 	if (BallPosX + D_BallRadius >= NPC1.GetNPCPosX() &&
 		BallPosX + D_BallRadius <= NPC1.GetNPCPosX() + D_BouncerWidth &&
@@ -105,8 +112,8 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 
 		}
 	}
-
 }
+
 void Ball::OutOfBounds(SDL_Renderer& renderer, PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow)
 {
 	if (BallPosX > ScreenWidth || BallPosX < 0 || BallPosY > ScreenHeight || BallPosY < 0)
@@ -132,6 +139,16 @@ void Ball::OutOfBounds(SDL_Renderer& renderer, PointCounter& Red, PointCounter& 
 			//std::cout << "Blue Point" << "\n";
 		}
 
+		BallPosX = ScreenWidth / 2 + D_BallDiameter;
+		BallPosY = ScreenHeight / 2 + D_BallDiameter;
+		cColor = cWhite;
+
+		DirectionX = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
+		DirectionY = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
+	}
+	if ((abs(BallPosX + D_BallRadius - ScreenWidth / 2) > ScreenWidth / 2 - D_RectangleSpace + 1)
+		&& (abs(BallPosY + D_BallRadius - ScreenHeight / 2) > ScreenWidth / 2 - D_RectangleSpace + 1))
+	{
 		BallPosX = ScreenWidth / 2 + D_BallDiameter;
 		BallPosY = ScreenHeight / 2 + D_BallDiameter;
 		cColor = cWhite;
