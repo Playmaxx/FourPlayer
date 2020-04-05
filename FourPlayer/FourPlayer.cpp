@@ -11,6 +11,7 @@
 #include "NPC.h"
 #include "Menu.h"
 #include "PointCounter.h"
+#include "GameManager.h"
 
 std::vector<Ball>* ballsPointer;
 
@@ -41,7 +42,7 @@ int main(int argc, char* argv[])
 	PointCounter* Blue = new PointCounter(ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1);
 	PointCounter* Yellow = new PointCounter(0 - 1, ScreenHeight - D_RectangleSpace + 1);
 
-
+	GameManager* GameRules = new GameManager();
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 
@@ -55,7 +56,7 @@ int main(int argc, char* argv[])
 
 		if (SDL_CreateWindowAndRenderer(ScreenWidth, ScreenHeight, 0, &window, &renderer) == 0) {
 
-			SDL_bool done = SDL_FALSE;
+			//SDL_bool done = SDL_FALSE;
 
 			MyBackground->InitBackground(*renderer);
 			Player1->InitTextures(*renderer);
@@ -72,17 +73,18 @@ int main(int argc, char* argv[])
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
 			//----- adding new balls --------//
-			for (int i = 0; i < 20; i++)
-			{
-				balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
-			}
+			balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
 
 
-			while (!done) {
+			int MakeShiftTimer = 0;
+
+			while (DONE == 0) {
 				int before = SDL_GetTicks();
 				SDL_Event event;
 				{}
 				SDL_RenderClear(renderer);
+
+
 
 				MyBackground->BackgroundRender(*renderer);
 
@@ -118,6 +120,7 @@ int main(int argc, char* argv[])
 
 
 
+
 				//----- calling their functions -//
 				for (auto& ball : balls) {
 					ball.Render(*renderer);
@@ -126,11 +129,14 @@ int main(int argc, char* argv[])
 					ball.OutOfBounds(*renderer, *Red, *Green, *Blue, *Yellow);
 				}
 
-
-
+				if (MakeShiftTimer == 60 * 8)
+				{
+					balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
+					MakeShiftTimer = 0;
+				}
 
 				SDL_RenderPresent(renderer);
-
+				MakeShiftTimer++;
 
 
 				int after = SDL_GetTicks();
@@ -142,9 +148,17 @@ int main(int argc, char* argv[])
 				}
 				ticks = SDL_GetTicks() - before;
 
+
+				if (GameRules->GameEnding(*Red, *Green, *Blue, *Yellow))
+				{
+					SDL_Delay(1000);
+					DONE = 1;
+				}
+
+
 				while (SDL_PollEvent(&event)) {
 					if (event.type == SDL_QUIT) {
-						done = SDL_TRUE;
+						DONE = 1;
 					}
 				}
 			}
@@ -166,8 +180,8 @@ int main(int argc, char* argv[])
 	delete Playerbounds4;
 
 
-
-	SDL_Quit();
 	TTF_Quit();
+	SDL_Quit();
+
 	return 0;
 }

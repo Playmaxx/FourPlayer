@@ -33,15 +33,17 @@ void Ball::Movement()
 	BallPosY = BallPosY + DirectionY * D_BallSpeed;
 	//std::cout << "DirectionX " << DirectionX << "\n";
 	//std::cout << "DirectionY " << DirectionY << "\n";
-
-	if (DirectionX <= 0.4 && DirectionX >= -0.4)
+	if (cColor.r == cWhite.r && cColor.g == cWhite.g && cColor.b == cWhite.b)
 	{
-		DirectionX = DirectionX * 2;
-	}
+		if (DirectionX <= 0.4 && DirectionX >= -0.4)
+		{
+			DirectionX = DirectionX * 2;
+		}
 
-	if (DirectionY <= 0.4 && DirectionY >= -0.4)
-	{
-		DirectionY = DirectionY * 2.0;
+		if (DirectionY <= 0.4 && DirectionY >= -0.4)
+		{
+			DirectionY = DirectionY * 2.0;
+		}
 	}
 
 
@@ -58,23 +60,21 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 		BallPosY + D_BallRadius <= Player1.GetPlayerPosY() + D_BouncerHeight / 4)
 	{
 		if (DirectionY > 0) {
-
 			DirectionY = DirectionY * -1;
 			cColor = cYellow;
-			std::cout << "DirectionY" << DirectionY << "\n";
+			//std::cout << "DirectionY" << DirectionY << "\n";
 
-			int deltaX = abs(BallPosX - Player1.GetPlayerPosX());
-			if (deltaX > D_BouncerWidth / 3 &&
-				deltaX < D_BouncerWidth / 3 * 2)
+			DirectionX = (((BallPosX + D_BallRadius) - (Player1.GetPlayerPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+
+			//std::cout << "BallPosX" << BallPosX << "\n";
+			//std::cout << "PlayerPosX" << Player1.GetPlayerPosX() << "\n";
+
+			if (DirectionY <= 0.4 && DirectionY >= -0.4)
 			{
-				DirectionX = 0;
-				DirectionY = DirectionY * 1.5;
-				std::cout << "DirectionX" << DirectionX << "\n";
+				DirectionY = DirectionY * 2.0;
 			}
+			//std::cout << "DirectionX" << DirectionX << "\n";
 		}
-
-
-
 	}
 
 	if (BallPosX + D_BallRadius >= NPC1.GetNPCPosX() &&
@@ -86,6 +86,12 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionY = DirectionY * -1;
 			cColor = cGreen;
 
+			DirectionX = (((BallPosX + D_BallRadius) - (NPC1.GetNPCPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+
+			if (DirectionY <= 0.4 && DirectionY >= -0.4)
+			{
+				DirectionY = DirectionY * 2.0;
+			}
 		}
 	}
 
@@ -98,7 +104,14 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionX = DirectionX * -1;
 			cColor = cRed;
 
+			DirectionY = (((BallPosY + D_BallRadius) - (NPC2.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+
+			if (DirectionX <= 0.4 && DirectionX >= -0.4)
+			{
+				DirectionX = DirectionX * 2.0;
+			}
 		}
+
 	}
 
 	if (BallPosX + D_BallRadius >= NPC3.GetNPCPosX() &&
@@ -110,6 +123,12 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionX = DirectionX * -1;
 			cColor = cBlue;
 
+			DirectionY = (((BallPosY + D_BallRadius) - (NPC3.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+
+			if (DirectionX <= 0.4 && DirectionX >= -0.4)
+			{
+				DirectionX = DirectionX * 2.0;
+			}
 		}
 	}
 }
@@ -139,8 +158,8 @@ void Ball::OutOfBounds(SDL_Renderer& renderer, PointCounter& Red, PointCounter& 
 			//std::cout << "Blue Point" << "\n";
 		}
 
-		BallPosX = ScreenWidth / 2 + D_BallDiameter;
-		BallPosY = ScreenHeight / 2 + D_BallDiameter;
+		BallPosX = ScreenWidth / 2 - D_BallDiameter;
+		BallPosY = ScreenHeight / 2 - D_BallDiameter;
 		cColor = cWhite;
 
 		DirectionX = ((float)rand() / RAND_MAX) * (1 - -1) + -1;

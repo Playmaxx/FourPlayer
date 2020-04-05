@@ -16,8 +16,8 @@ public:
 	
 	void Colission();
 
-	int const GetPlayerPosX();
-	int const GetPlayerPosY();
+	float const GetPlayerPosX();
+	float const GetPlayerPosY();
 
 	void inline SetPlayerPositionX(int x) {
 		PlayerPosX = x;
@@ -36,9 +36,9 @@ private:
 
 };
 
-inline const int Player::GetPlayerPosX() {
+inline const float Player::GetPlayerPosX() {
 	return PlayerPosX;
 }
-inline const int Player::GetPlayerPosY() {
+inline const float Player::GetPlayerPosY() {
 	return PlayerPosY;
 }

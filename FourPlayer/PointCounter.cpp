@@ -9,13 +9,16 @@ PointCounter::PointCounter(int _x, int _y) :
 };
 
 PointCounter::~PointCounter()
-{};
+{
+	SDL_FreeSurface(surfaceMessage);
+	SDL_DestroyTexture(Message);
+};
 
 void PointCounter::InitPoints(SDL_Renderer& renderer)
 {
-
-	//surfaceMessage = TTF_RenderText_Blended(PointFont, scoreText.c_str(), Black);
-	//Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
+	std::string scoreText = std::to_string(Score);
+	surfaceMessage = TTF_RenderText_Blended(PointFont, scoreText.c_str(), Black);
+	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
 
 
 	Message_rect.w = D_RectangleSpace / 2 + 20; // controls the width of the rect
@@ -36,7 +39,6 @@ void PointCounter::Render(SDL_Renderer& renderer)
 
 void PointCounter::UpdatePoints(SDL_Renderer& renderer)
 {
-
 
 	SDL_FreeSurface(surfaceMessage);
 	SDL_DestroyTexture(Message);

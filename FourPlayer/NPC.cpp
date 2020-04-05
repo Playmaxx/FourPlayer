@@ -72,18 +72,18 @@ void NPC::Movement(std::vector<Ball> *balls)
 	{
 
 		if ((tempBallY.GetBallPosX() + D_BallRadius) - (NPCPosX + D_BouncerWidth / 2) > 0)
-			NPCPosX = NPCPosX + D_PlayerSpeed;
+			NPCPosX = NPCPosX + D_NPCSpeed;
 		if ((tempBallY.GetBallPosX() + D_BallRadius) - (NPCPosX + D_BouncerWidth / 2) < 0)
-			NPCPosX = NPCPosX - D_PlayerSpeed;
+			NPCPosX = NPCPosX - D_NPCSpeed;
 	}
 
 	if (Orientation == 2)
 	{
 
 		if ((tempBallX.GetBallPosY() + D_BallRadius) - (NPCPosY + D_BouncerWidth / 2) > 0)
-			NPCPosY = NPCPosY + D_PlayerSpeed;
+			NPCPosY = NPCPosY + D_NPCSpeed;
 		if ((tempBallX.GetBallPosY() + D_BallRadius) - (NPCPosY + D_BouncerWidth / 2) < 0)
-			NPCPosY = NPCPosY - D_PlayerSpeed;
+			NPCPosY = NPCPosY - D_NPCSpeed;
 	}
 
 }

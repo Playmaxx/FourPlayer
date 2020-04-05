@@ -14,6 +14,8 @@ public:
 	void Render(SDL_Renderer& renderer);
 	void UpdatePoints(SDL_Renderer& renderer);
 
+	int const GetScore();
+
 private:
 
 	TTF_Font* PointFont;
@@ -31,3 +33,6 @@ private:
 
 };
 
+inline const int PointCounter::GetScore() {
+	return Score;
+}
