@@ -51,8 +51,9 @@ private:
 	float BallPosX;
 	float BallPosY;
 
-	float DirectionX = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
 	float DirectionY = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
+	float DirectionX = ((float)rand() / RAND_MAX) * (1 - -1) + -1;
+	
 
 
 };

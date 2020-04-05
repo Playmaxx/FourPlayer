@@ -4,7 +4,7 @@
 PointCounter::PointCounter(int _x, int _y) :
 	PointFont(TTF_OpenFont("Font/consolab.ttf", 150))
 {
-	PosX = _x + 10;
+	PosX = _x + 33;
 	PosY = _y + 27;
 };
 
@@ -21,7 +21,7 @@ void PointCounter::InitPoints(SDL_Renderer& renderer)
 	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
 
 
-	Message_rect.w = D_RectangleSpace / 2 + 20; // controls the width of the rect
+	Message_rect.w = D_RectangleSpace / 3 ; // controls the width of the rect
 	Message_rect.h = D_RectangleSpace / 2; // controls the height of the rect
 	Message_rect.x = PosX;  //controls the rect's x coordinate 
 	Message_rect.y = PosY; // controls the rect's y coordinte

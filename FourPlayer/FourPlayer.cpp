@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 
 	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
-	Menu* MainMenu = new Menu;
+	//Menu* MainMenu = new Menu;
 
 	PointCounter* Red = new PointCounter(0 - 1, 0 - 1);
 	PointCounter* Green = new PointCounter(ScreenWidth - D_RectangleSpace + 1, 0 - 1);
@@ -64,17 +64,18 @@ int main(int argc, char* argv[])
 			NPC2->InitTextures(*renderer, "Bouncer3.bmp");
 			NPC3->InitTextures(*renderer, "Bouncer4.bmp");
 
-			MainMenu->InitMenu(*renderer, D_RectangleSpace, D_RectangleSpace);
+			GameRules->InitRules(*renderer);
+
+			//MainMenu->InitMenu(*renderer, D_RectangleSpace, D_RectangleSpace);
 			Red->InitPoints(*renderer);
 			Green->InitPoints(*renderer);
-			Blue->InitPoints(*renderer);
+			Blue->InitPoints(*renderer);	
 			Yellow->InitPoints(*renderer);
 
 			//----- intializing vector somewhere in your code ----- //
 			std::vector<Ball> balls;
 			//----- adding new balls --------//
 			balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
-
 
 			int MakeShiftTimer = 0;
 
@@ -112,13 +113,13 @@ int main(int argc, char* argv[])
 				NPC3->Colission();
 				NPC3->Render(*renderer);
 
-				//inMenu->Render(*renderer);
+				//MainMenu->Render(*renderer);
 				Red->Render(*renderer);
 				Green->Render(*renderer);
 				Blue->Render(*renderer);
 				Yellow->Render(*renderer);
 
-
+				GameRules->Render(*renderer);
 
 
 				//----- calling their functions -//
@@ -129,7 +130,7 @@ int main(int argc, char* argv[])
 					ball.OutOfBounds(*renderer, *Red, *Green, *Blue, *Yellow);
 				}
 
-				if (MakeShiftTimer == 60 * 8)
+				if (MakeShiftTimer == 60 * 10)
 				{
 					balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
 					MakeShiftTimer = 0;
