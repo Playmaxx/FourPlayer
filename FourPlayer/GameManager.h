@@ -23,9 +23,12 @@ private:
 	TTF_Font* TutorialFont;
 	SDL_Color White = { 255, 255, 255 };
 	SDL_Surface* surfaceMessage;
+	SDL_Surface* surfaceMessage2;
 	SDL_Texture* Message;
 	SDL_Rect Message_rect;
-
+	SDL_Rect Message2_rect;
+	SDL_Texture* Message2;
+	
 
 
 	int i = 0;

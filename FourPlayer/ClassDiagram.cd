@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="RectangleDrawer">
-    <Position X="4.5" Y="11.25" Width="1.5" />
+    <Position X="12.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>RectangleDrawer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Background">
-    <Position X="14.25" Y="6.75" Width="1.5" />
+    <Position X="12.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Background.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ball">
-    <Position X="6.75" Y="8" Width="1.5" />
+    <Position X="17.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAABAgAgIAAAAgKBAAAAgAgAAAAGBAAAVAAAIRwAIA=</HashCode>
       <FileName>Ball.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="cWhite" />
-      <Field Name="cYellow" />
-      <Field Name="cRed" />
+      <Field Name="cBlue" />
       <Field Name="cGreen" />
       <Field Name="cColor" />
-      <Field Name="cBlue" />
+      <Field Name="cWhite" />
+      <Field Name="cRed" />
+      <Field Name="cYellow" />
     </ShowAsAssociation>
   </Class>
   <Class Name="GameManager">
-    <Position X="4.5" Y="3.25" Width="1.5" />
+    <Position X="9.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAEAAAAAAAAAAABAAAAAAAIBAAIAFQCQA=</HashCode>
       <FileName>GameManager.h</FileName>
@@ -44,7 +44,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Menu">
-    <Position X="4.5" Y="6" Width="1.5" />
+    <Position X="9.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAEAAAAAAAAAAABAAIAAAAABgAIAAACAA=</HashCode>
       <FileName>Menu.h</FileName>
@@ -53,12 +53,12 @@
       <Field Name="MenuFont" />
       <Field Name="Message" />
       <Field Name="Message_rect" />
-      <Field Name="White" />
       <Field Name="surfaceMessage" />
+      <Field Name="White" />
     </ShowAsAssociation>
   </Class>
   <Class Name="NPC">
-    <Position X="14.25" Y="8.25" Width="1.5" />
+    <Position X="17.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAACAERgAAAAAhAAAAAAAEAAAAAAAAJAQgAAAAJE=</HashCode>
       <FileName>NPC.h</FileName>
@@ -68,7 +68,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Player">
-    <Position X="14.25" Y="3" Width="1.5" />
+    <Position X="9.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ADAAgAEAAAAAAAABAAgAAAAAAAAgAAAAABAQAQAAABE=</HashCode>
       <FileName>Player.h</FileName>
@@ -78,7 +78,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="PointCounter">
-    <Position X="4.5" Y="8" Width="1.5" />
+    <Position X="9.75" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAEAAAAABAAEAgAAIAAwAAAAAAAACAAADAAoAAACAA=</HashCode>
       <FileName>PointCounter.h</FileName>
@@ -92,38 +92,38 @@
     </ShowAsAssociation>
   </Class>
   <Struct Name="SDL_Rect" Collapsed="true">
-    <Position X="10" Y="3" Width="1.5" />
+    <Position X="14.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAhgAAAAAAA=</HashCode>
       <FileName>E:\GitKraken\FourPlayer\SDL2-2.0.10\include\SDL_rect.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="SDL_Color" Collapsed="true">
-    <Position X="10" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQABAAAAAAA=</HashCode>
-      <FileName>E:\GitKraken\FourPlayer\SDL2-2.0.10\include\SDL_pixels.h</FileName>
-    </TypeIdentifier>
-  </Struct>
   <Struct Name="SDL_Surface" Collapsed="true">
-    <Position X="10" Y="6" Width="1.5" />
+    <Position X="14.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAIAEAAAAACQAAAAAACECAQAgAAAAAAAQ=</HashCode>
       <FileName>E:\GitKraken\FourPlayer\SDL2-2.0.10\include\SDL_surface.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Typedef Name="TTF_Font" Collapsed="true">
-    <Position X="10" Y="3.75" Width="1.5" />
+  <Struct Name="SDL_Color" Collapsed="true">
+    <Position X="14.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>E:\GitKraken\FourPlayer\SDL2_ttf\include\SDL_ttf.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQABAAAAAAA=</HashCode>
+      <FileName>E:\GitKraken\FourPlayer\SDL2-2.0.10\include\SDL_pixels.h</FileName>
     </TypeIdentifier>
-  </Typedef>
+  </Struct>
   <Typedef Name="SDL_Texture" Collapsed="true">
-    <Position X="10" Y="4.5" Width="1.5" />
+    <Position X="14.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>E:\GitKraken\FourPlayer\SDL2-2.0.10\include\SDL_render.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TTF_Font" Collapsed="true">
+    <Position X="14.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>E:\GitKraken\FourPlayer\SDL2_ttf\include\SDL_ttf.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Font Name="Segoe UI" Size="9" />

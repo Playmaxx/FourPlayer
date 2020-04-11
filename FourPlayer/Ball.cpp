@@ -64,7 +64,7 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			cColor = cYellow;
 			//std::cout << "DirectionY" << DirectionY << "\n";
 
-			DirectionX = (((BallPosX + D_BallRadius) - (Player1.GetPlayerPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+			DirectionX = (((BallPosX + D_BallRadius) - (Player1.GetPlayerPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2)) * 0.8;
 
 			//std::cout << "BallPosX" << BallPosX << "\n";
 			//std::cout << "PlayerPosX" << Player1.GetPlayerPosX() << "\n";
@@ -86,7 +86,7 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionY = DirectionY * -1;
 			cColor = cGreen;
 
-			DirectionX = (((BallPosX + D_BallRadius) - (NPC1.GetNPCPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+			DirectionX = (((BallPosX + D_BallRadius) - (NPC1.GetNPCPosX() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2)) * 0.8;
 
 			if (DirectionY <= 0.6 && DirectionY >= -0.6)
 			{
@@ -104,7 +104,7 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionX = DirectionX * -1;
 			cColor = cRed;
 
-			DirectionY = (((BallPosY + D_BallRadius) - (NPC2.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+			DirectionY = (((BallPosY + D_BallRadius) - (NPC2.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2)) * 0.8;
 
 			if (DirectionX <= 0.6 && DirectionX >= -0.6)
 			{
@@ -123,7 +123,7 @@ void Ball::Collision(Player& Player1, NPC& NPC1, NPC& NPC2, NPC& NPC3)
 			DirectionX = DirectionX * -1;
 			cColor = cBlue;
 
-			DirectionY = (((BallPosY + D_BallRadius) - (NPC3.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2));
+			DirectionY = (((BallPosY + D_BallRadius) - (NPC3.GetNPCPosY() + (D_BouncerWidth / 2))) / (D_BouncerWidth / 2)) * 0.8;
 
 			if (DirectionX <= 0.6 && DirectionX >= -0.6)
 			{

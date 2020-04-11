@@ -11,9 +11,13 @@ E:\GitKraken\FourPlayer\FourPlayer\Ball.h(65,9): warning C4244: "return": Konver
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(17,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(18,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(45,28): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(67,121): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(74,29): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(89,115): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(93,29): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(107,115): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(111,29): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(126,115): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
 E:\GitKraken\FourPlayer\FourPlayer\Ball.cpp(130,29): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
   FourPlayer.cpp
 E:\GitKraken\FourPlayer\FourPlayer\Player.h(23,16): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust

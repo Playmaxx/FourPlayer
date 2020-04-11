@@ -38,17 +38,21 @@ bool GameManager::GameEnding(PointCounter& Red, PointCounter& Green, PointCounte
 
 void GameManager::InitRules(SDL_Renderer& renderer)
 {
-
-	surfaceMessage = TTF_RenderText_Blended(TutorialFont, "First to 10 Points wins", White);
-	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
-
-
 	Message_rect.w = 500; // controls the width of the rect
 	Message_rect.h = 100; // controls the height of the rect
 	Message_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
 	Message_rect.y = ScreenHeight / 2 - Message_rect.h / 2 - 100; // controls the rect's y coordinte
 
+	surfaceMessage = TTF_RenderText_Blended(TutorialFont, "First to 10 Points wins", White);
+	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
 
+	Message2_rect.w = 500; // controls the width of the rect
+	Message2_rect.h = 70; // controls the height of the rect
+	Message2_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
+	Message2_rect.y = ScreenHeight / 2 - Message_rect.h / 2; // controls the rect's y coordinte
+
+	surfaceMessage2 = TTF_RenderText_Blended(TutorialFont, "Use A / D to move", White);
+	Message2 = SDL_CreateTextureFromSurface(&renderer, surfaceMessage2);
 }
 
 void GameManager::Render(SDL_Renderer& renderer)
@@ -56,6 +60,7 @@ void GameManager::Render(SDL_Renderer& renderer)
 	if (i < 60 * 8)
 	{
 		SDL_RenderCopy(&renderer, Message, NULL, &Message_rect);
+		SDL_RenderCopy(&renderer, Message2, NULL, &Message2_rect);
 		i++;
 	}
 }

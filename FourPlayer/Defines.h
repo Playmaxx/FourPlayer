@@ -11,7 +11,7 @@ static const int ScreenWidth = 1000;
 static const int ScreenHeight = 1000;
 static const int D_RectangleSpace = 100;
 static const float D_PlayerSpeed = 10;
-static const float D_NPCSpeed = 7;
+static const float D_NPCSpeed = 6;
 
 static const int D_BouncerHeight = 50;
 static const int D_BouncerWidth = 125;

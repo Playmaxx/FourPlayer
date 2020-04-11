@@ -179,6 +179,16 @@ int main(int argc, char* argv[])
 	delete Playerbounds2;
 	delete Playerbounds3;
 	delete Playerbounds4;
+	delete NPC1;
+	delete NPC2;
+	delete NPC3;
+	delete Red;
+	delete Green;
+	delete Blue;
+	delete Yellow;
+	delete GameRules;
+
+
 
 
 	TTF_Quit();
