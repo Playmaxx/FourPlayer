@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 			while (DONE == 0) {
 				int before = SDL_GetTicks();
 				SDL_Event event;
-				{}
+			
 				SDL_RenderClear(renderer);
 
 
