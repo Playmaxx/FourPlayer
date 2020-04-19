@@ -6,15 +6,16 @@ class GameManager
 {
 public:
 
-	GameManager();
+	GameManager(MenuScreens& _ScreenRef);
 	~GameManager();
 
-	bool GameEnding(PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow);
+	void GameEnding(PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow);
 
 	void InitRules(SDL_Renderer& renderer);
 
 	void Render(SDL_Renderer& renderer);
-	
+
+
 
 
 
@@ -28,10 +29,10 @@ private:
 	SDL_Rect Message_rect;
 	SDL_Rect Message2_rect;
 	SDL_Texture* Message2;
-	
+
+	MenuScreens& ScreenRef;
 
 
-	int i = 0;
 
 
 

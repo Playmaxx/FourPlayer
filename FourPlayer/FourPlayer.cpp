@@ -1,8 +1,6 @@
 // FourPlayer.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
 
 #include "Defines.h"
-
 
 #include "Background.h"
 #include "RectangleDrawer.h"
@@ -20,6 +18,7 @@ int main(int argc, char* argv[])
 	TTF_Init();
 	IMG_Init(IMG_INIT_PNG);
 	IMG_Init(IMG_INIT_JPG);
+	srand((unsigned)time(0));
 
 	Background* MyBackground = new Background();
 	RectangleDrawer* Playerbounds1 = new RectangleDrawer();
@@ -35,24 +34,22 @@ int main(int argc, char* argv[])
 
 	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
-	//Menu* MainMenu = new Menu;
-
 	PointCounter* Red = new PointCounter(0 - 1, 0 - 1);
 	PointCounter* Green = new PointCounter(ScreenWidth - D_RectangleSpace + 1, 0 - 1);
 	PointCounter* Blue = new PointCounter(ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1);
 	PointCounter* Yellow = new PointCounter(0 - 1, ScreenHeight - D_RectangleSpace + 1);
 
-	GameManager* GameRules = new GameManager();
+	MenuScreens Screen = MenuScreens::MainMenu;
+
+	Menu* MainMenu = new Menu(Screen);
+
+	GameManager* GameRules = new GameManager(Screen);
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 
 
 		SDL_Window* window = NULL;
 		SDL_Renderer* renderer = NULL;
-
-
-
-
 
 		if (SDL_CreateWindowAndRenderer(ScreenWidth, ScreenHeight, 0, &window, &renderer) == 0) {
 
@@ -66,10 +63,10 @@ int main(int argc, char* argv[])
 
 			GameRules->InitRules(*renderer);
 
-			//MainMenu->InitMenu(*renderer, D_RectangleSpace, D_RectangleSpace);
+			MainMenu->InitMenu(*renderer, 500, 200);
 			Red->InitPoints(*renderer);
 			Green->InitPoints(*renderer);
-			Blue->InitPoints(*renderer);	
+			Blue->InitPoints(*renderer);
 			Yellow->InitPoints(*renderer);
 
 			//----- intializing vector somewhere in your code ----- //
@@ -82,63 +79,75 @@ int main(int argc, char* argv[])
 			while (DONE == 0) {
 				int before = SDL_GetTicks();
 				SDL_Event event;
-			
+
 				SDL_RenderClear(renderer);
 
-
-
-				MyBackground->BackgroundRender(*renderer);
-
-
-				Playerbounds1->Render(*renderer, 0 - 1, 0 - 1, 255, 0, 0);																//// RED
-				Playerbounds2->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, 0 - 1, 0, 255, 0);									//// GREEN
-				Playerbounds3->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1, 0, 0, 255);		//// BLUE
-				Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
-
-
-				Player1->Render(*renderer);
-				Player1->MovementInput();
-				Player1->Colission();
-
-
-				NPC1->Movement(&balls);
-				NPC1->Colission();
-				NPC1->Render(*renderer);
-
-				NPC2->Movement(&balls);
-				NPC2->Colission();
-				NPC2->Render(*renderer);
-
-				NPC3->Movement(&balls);
-				NPC3->Colission();
-				NPC3->Render(*renderer);
-
-				//MainMenu->Render(*renderer);
-				Red->Render(*renderer);
-				Green->Render(*renderer);
-				Blue->Render(*renderer);
-				Yellow->Render(*renderer);
-
-				GameRules->Render(*renderer);
-
-
-				//----- calling their functions -//
-				for (auto& ball : balls) {
-					ball.Render(*renderer);
-					ball.Movement();
-					ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
-					ball.OutOfBounds(*renderer, *Red, *Green, *Blue, *Yellow);
-				}
-
-				if (MakeShiftTimer == 60 * 10)
+				switch (Screen)
 				{
-					balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
-					MakeShiftTimer = 0;
+				case MenuScreens::MainMenu:
+					MyBackground->BackgroundRender(*renderer);
+					MainMenu->Render(*renderer, Screen);
+					GameRules->Render(*renderer);
+					SDL_RenderPresent(renderer);
+					break;
+
+				case MenuScreens::Ingame:
+					MyBackground->BackgroundRender(*renderer);
+
+					Playerbounds1->Render(*renderer, 0 - 1, 0 - 1, 255, 0, 0);																//// RED
+					Playerbounds2->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, 0 - 1, 0, 255, 0);									//// GREEN
+					Playerbounds3->Render(*renderer, ScreenWidth - D_RectangleSpace + 1, ScreenHeight - D_RectangleSpace + 1, 0, 0, 255);		//// BLUE
+					Playerbounds4->Render(*renderer, 0 - 1, ScreenHeight - D_RectangleSpace + 1, 255, 255, 0);								//// YELLOW
+
+					Player1->Render(*renderer);
+					Player1->MovementInput();
+					Player1->Colission();
+
+					NPC1->Movement(&balls);
+					NPC1->Colission();
+					NPC1->Render(*renderer);
+
+					NPC2->Movement(&balls);
+					NPC2->Colission();
+					NPC2->Render(*renderer);
+
+					NPC3->Movement(&balls);
+					NPC3->Colission();
+					NPC3->Render(*renderer);
+
+					Red->Render(*renderer);
+					Green->Render(*renderer);
+					Blue->Render(*renderer);
+					Yellow->Render(*renderer);
+
+					GameRules->GameEnding(*Red, *Green, *Blue, *Yellow);
+
+					//----- calling their functions -//
+					for (auto& ball : balls) {
+						ball.Render(*renderer);
+						ball.Movement();
+						ball.Collision(*Player1, *NPC1, *NPC2, *NPC3);
+						ball.OutOfBounds(*renderer, *Red, *Green, *Blue, *Yellow);
+					}
+
+					if (MakeShiftTimer == 60 * 10)
+					{
+						balls.push_back(Ball(ScreenWidth / 2 - D_BallDiameter, ScreenHeight / 2 - D_BallDiameter));
+						MakeShiftTimer = 0;
+					}
+
+					SDL_RenderPresent(renderer);
+					MakeShiftTimer++;
+					break;
+
+				case MenuScreens::Endscreen:
+					MyBackground->BackgroundRender(*renderer);
+					MainMenu->GameOverScreen(*renderer);
+					SDL_RenderPresent(renderer);
+					break;
+				default:
+					break;
 				}
-
-				SDL_RenderPresent(renderer);
-				MakeShiftTimer++;
-
 
 				int after = SDL_GetTicks();
 				int ticks = after - before;
@@ -149,22 +158,15 @@ int main(int argc, char* argv[])
 				}
 				ticks = SDL_GetTicks() - before;
 
-
-				if (GameRules->GameEnding(*Red, *Green, *Blue, *Yellow))
-				{
-					SDL_Delay(1000);
-					DONE = 1;
-				}
-
-
 				while (SDL_PollEvent(&event)) {
-					if (event.type == SDL_QUIT) {
-						DONE = 1;
+
+					if (event.type == SDL_MOUSEBUTTONDOWN && Screen == MenuScreens::MainMenu)
+					{
+						MainMenu->SwitchScreen(event.button);
 					}
 				}
 			}
 		}
-
 
 		if (renderer) {
 			SDL_DestroyRenderer(renderer);
@@ -173,6 +175,7 @@ int main(int argc, char* argv[])
 			SDL_DestroyWindow(window);
 		}
 	}
+
 	delete MyBackground;
 	delete Player1;
 	delete Playerbounds1;
@@ -187,9 +190,6 @@ int main(int argc, char* argv[])
 	delete Blue;
 	delete Yellow;
 	delete GameRules;
-
-
-
 
 	TTF_Quit();
 	SDL_Quit();

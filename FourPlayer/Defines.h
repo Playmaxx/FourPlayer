@@ -6,6 +6,7 @@
 #include "string"
 #include "vector"
 #include <cmath>
+#include <time.h>
 
 static const int ScreenWidth = 1000;
 static const int ScreenHeight = 1000;
@@ -28,3 +29,9 @@ static const int D_BallDestructorRange = 50;
 
 static int DONE = 0;
 
+enum class MenuScreens
+{
+	MainMenu,
+	Ingame,
+	Endscreen
+};

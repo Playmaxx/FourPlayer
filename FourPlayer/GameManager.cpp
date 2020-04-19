@@ -1,15 +1,16 @@
 #include "GameManager.h"
 
 
-GameManager::GameManager() :
-	TutorialFont(TTF_OpenFont("Font/consolab.ttf", 150))
+GameManager::GameManager(MenuScreens& _ScreenRef) :
+	TutorialFont(TTF_OpenFont("Font/consolab.ttf", 150)),
+	ScreenRef(_ScreenRef)
 {}
 
 GameManager::~GameManager()
 {}
 
 
-bool GameManager::GameEnding(PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow)
+void GameManager::GameEnding(PointCounter& Red, PointCounter& Green, PointCounter& Blue, PointCounter& Yellow)
 {
 
 
@@ -27,21 +28,16 @@ bool GameManager::GameEnding(PointCounter& Red, PointCounter& Green, PointCounte
 		if (Yellow.GetScore() > 9) {
 			std::cout << "YELLOW WON" << "\n";
 		}
-		//std::cout << Yellow.GetScore() << "\n";
-		return true;
-
+		ScreenRef = MenuScreens::Endscreen;
 	}
-
-	return false;
-
 };
 
 void GameManager::InitRules(SDL_Renderer& renderer)
 {
 	Message_rect.w = 500; // controls the width of the rect
-	Message_rect.h = 100; // controls the height of the rect
+	Message_rect.h = 80; // controls the height of the rect
 	Message_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
-	Message_rect.y = ScreenHeight / 2 - Message_rect.h / 2 - 100; // controls the rect's y coordinte
+	Message_rect.y = ScreenHeight / 2 +200; // controls the rect's y coordinte
 
 	surfaceMessage = TTF_RenderText_Blended(TutorialFont, "First to 10 Points wins", White);
 	Message = SDL_CreateTextureFromSurface(&renderer, surfaceMessage);
@@ -49,7 +45,7 @@ void GameManager::InitRules(SDL_Renderer& renderer)
 	Message2_rect.w = 500; // controls the width of the rect
 	Message2_rect.h = 70; // controls the height of the rect
 	Message2_rect.x = ScreenWidth / 2 - Message_rect.w / 2;  //controls the rect's x coordinate 
-	Message2_rect.y = ScreenHeight / 2 - Message_rect.h / 2; // controls the rect's y coordinte
+	Message2_rect.y = ScreenHeight / 2 + 300; // controls the rect's y coordinte
 
 	surfaceMessage2 = TTF_RenderText_Blended(TutorialFont, "Use A / D to move", White);
 	Message2 = SDL_CreateTextureFromSurface(&renderer, surfaceMessage2);
@@ -57,10 +53,8 @@ void GameManager::InitRules(SDL_Renderer& renderer)
 
 void GameManager::Render(SDL_Renderer& renderer)
 {
-	if (i < 60 * 8)
-	{
+
 		SDL_RenderCopy(&renderer, Message, NULL, &Message_rect);
 		SDL_RenderCopy(&renderer, Message2, NULL, &Message2_rect);
-		i++;
-	}
+
 }
