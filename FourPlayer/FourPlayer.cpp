@@ -29,9 +29,7 @@ int main(int argc, char* argv[])
 	Player* Player1 = new Player(ScreenWidth / 2 - (D_BouncerWidth / 2), ScreenHeight - D_RectangleSpace + 1); //// Spawn Player Centered in Screen
 
 	NPC* NPC1 = new NPC(ScreenWidth / 2 - (D_BouncerWidth / 2), 0 + D_RectangleSpace - D_NPCHeight - 1, D_NPCWidth, D_NPCHeight, 0, 255, 0, 1);
-
 	NPC* NPC2 = new NPC(0 + D_RectangleSpace - D_NPCHeight - 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 255, 0, 0, 2);
-
 	NPC* NPC3 = new NPC(ScreenWidth - D_RectangleSpace + 1, ScreenHeight / 2, D_NPCHeight, D_NPCWidth, 0, 0, 255, 2);
 
 	PointCounter* Red = new PointCounter(0 - 1, 0 - 1);
@@ -159,7 +157,9 @@ int main(int argc, char* argv[])
 				ticks = SDL_GetTicks() - before;
 
 				while (SDL_PollEvent(&event)) {
-
+					if (event.type == SDL_QUIT) {
+						DONE = 1;
+					}
 					if (event.type == SDL_MOUSEBUTTONDOWN && Screen == MenuScreens::MainMenu)
 					{
 						MainMenu->SwitchScreen(event.button);
